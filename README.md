@@ -4,20 +4,14 @@ A fault‑tolerant, provider‑agnostic email sender written in modern **ES modu
 
 ---
 
-## Feature Matrix
-
-| Capability                      | Implemented? | Notes                                           |
-| ------------------------------- | ------------ | ----------------------------------------------- |
-| Retry with exponential back‑off | ✔            | 100 ms → 200 ms → 400 ms (default 3 attempts)   |
-| Automatic provider fallback     | ✔            | Ordered array: **SendGridMock → SESMock**       |
-| Idempotency                     | ✔            | Duplicate `id` skipped via in‑memory `Set`      |
-| Rate limiting                   | ✔            | Token‑bucket: *20 requests/second*              |
-| Per‑message status API          | ✔            | `GET /status/:id` returns live state            |
-| Circuit breaker (bonus)         | ✔            | Opens after 3 consecutive failures per provider |
-| In‑memory queue (bonus)         | ✔            | Optional FIFO; background worker loop           |
-| Simple logging (bonus)          | ✔            | Console logs; swap to Pino/Winston in one line  |
-| 100 % unit‑testable             | ✔            | Jest test‑suite passes (`npm test`)             |
-
+## Features
+* Retry with exponential back-off
+* Automatic provider fallback (SendGridMock → SESMock)
+* Idempotency (skip duplicates)
+* Token-bucket rate limiting (20 req / sec)
+* Per-message status endpoint
+* Circuit-breaker + in-memory queue (bonus)
+* 100 % unit-testable (Jest)
 ---
 
 ## Quick Start (Local)
